@@ -26,7 +26,7 @@ class UtilTest(base.TestCase):
         )
         
     def testRoundint(self):
-        self.assertEqual(5, util.roundint(4.8))
+        self.assertEqual((5, 5), util.roundint((4.8, 5.1)))
 
     def testGetRotatedRectanglePoints(self):
         """Rotate a unit square by 45 degrees"""

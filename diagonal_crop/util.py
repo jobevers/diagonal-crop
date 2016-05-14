@@ -28,7 +28,7 @@ def getBoundsCenter(bounds):
 
 
 def roundint(values):
-    return [int(round(v)) for v in values]
+    return tuple(int(round(v)) for v in values)
 
 
 def getRotatedRectanglePoints(angle, base_point, height, width):
