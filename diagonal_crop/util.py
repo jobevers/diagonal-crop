@@ -14,10 +14,10 @@ Bound = collections.namedtuple('Bound', ('left', 'upper', 'right', 'lower'))
 
 
 def getBounds(points):
-    x, y = zip(*points)
+    xs, ys = zip(*points)
     # left, upper, right, lower using the usual image coordinate system
     # where top-left of the image is 0, 0
-    return Bound(min(x), min(y), max(x), max(y))
+    return Bound(min(xs), min(ys), max(xs), max(ys))
 
 
 def getBoundsCenter(bounds):
@@ -27,21 +27,22 @@ def getBoundsCenter(bounds):
     )
 
 
-def roundint(value):
-    return int(round(value))
+def roundint(values):
+    return [int(round(v)) for v in values]
 
 
 def getRotatedRectanglePoints(angle, base_point, height, width):
-    a = point.Point(
+    # base_point is the upper left (ul)
+    ur = point.Point(
         width * math.cos(angle),
         -width * math.sin(angle)
     )
-    c = point.Point(
-        a.x + height * math.sin(angle),
-        a.y + height * math.cos(angle)
+    lr = point.Point(
+        ur.x + height * math.sin(angle),
+        ur.y + height * math.cos(angle)
     )
-    b = point.Point(
+    ll = point.Point(
         height * math.cos(math.pi / 2 - angle),
         height * math.sin(math.pi / 2 - angle)
     )
-    return tuple(base_point + x for x in (point.Point(0, 0), a, c, b))
+    return tuple(base_point + pt for pt in (point.Point(0, 0), ur, lr, ll))

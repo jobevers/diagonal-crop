@@ -1,5 +1,5 @@
-from diagonal_crop.point import *
-from diagonal_crop.util import *
+from diagonal_crop.point import * # pylint: disable=wildcard-import
+from diagonal_crop.util import * # pylint: disable=wildcard-import
 
 
 def crop(im, base, angle, height, width):
@@ -18,8 +18,8 @@ def crop(im, base, angle, height, width):
 
 
 def _cropWithPoints(im, angle, points):
-    bounds = util.getBounds(points)
-    im2 = im.crop(map(roundint, bounds))
+    bounds = getBounds(points)
+    im2 = im.crop(roundint(bounds))
     bound_center = getBoundsCenter(bounds)
     crop_center = getCenter(im2)
     # in the cropped image, this is where our points are
@@ -31,5 +31,5 @@ def _cropWithPoints(im, angle, points):
     # but, since the image has been expanded, we need to recenter
     im3_center = getCenter(im3)
     rotated_expanded_points = [pt.recenter(crop_center, im3_center) for pt in rotated_points]
-    im4 = im3.crop(map(roundint, getBounds(rotated_expanded_points)))
+    im4 = im3.crop(roundint(getBounds(rotated_expanded_points)))
     return im4
