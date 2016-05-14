@@ -1,4 +1,7 @@
+[![Build Status](https://travis-ci.org/jobevers/diagonal-crop.svg?branch=master)](https://travis-ci.org/jobevers/diagonal-crop)
+
 # diagonal-crop
+
 Diagonally crop an image using python and pillow
 
 # Usage
