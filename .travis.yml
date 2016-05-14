@@ -1,0 +1,6 @@
+install:
+  - pip install pylint
+
+script:
+  - python setup.py nosetests
+  - pylint diagonal_crop
