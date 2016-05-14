@@ -7,6 +7,8 @@ Diagonally crop an image using python and pillow
 
 The black box is the area that we want to crop.  It is a 150x200 rectangle rotated 45 degrees.  The red dot is the base, at (200, 250).
 
+This code
+
 ```python
 import math
 from PIL import Image
@@ -14,8 +16,12 @@ import diagonal_crop
 
 im = Image.open('media/lenna.png')
 angle = math.pi / 4
-cropped_im = diagonal_crop.crop(im, (200, 250), angle, 150, 200)
+base = (200, 250)
+height = 150
+width = 200
+cropped_im = diagonal_crop.crop(im, base, angle, height, width)
 ```
+ produces this image:
 
 ![Alt Text](media/output.png?raw=true "Title")
 
@@ -24,8 +30,8 @@ cropped_im = diagonal_crop.crop(im, (200, 250), angle, 150, 200)
 Making the crop is relatively simple; at a high level the image is
 rotated and then cropped.
 
-For large images rotation can be expensive
-so first, the image is cropped down to the bounding box of the target
+For large images rotation can be expensive.
+So first, the image is cropped down to the bounding box of the target
 area. The bounding box is shown in white:
 
 ![Alt Text](media/lenna-bounding-box.png?raw=true "Title")
