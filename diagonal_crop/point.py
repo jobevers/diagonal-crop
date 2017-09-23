@@ -22,4 +22,3 @@ class Point(_Point):
         x = math.cos(angle) * (self.x - center.x) - math.sin(angle) * (self.y - center.y) + center.x
         y = math.sin(angle) * (self.x - center.x) + math.cos(angle) * (self.y - center.y) + center.y
         return Point(x, y)
-
